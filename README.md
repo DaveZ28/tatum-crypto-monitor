@@ -35,6 +35,7 @@ The project is split into three main modules:
 
 ### 1) Clone
 git clone https://github.com/DaveZ28/tatum-crypto-monitor.git
+
 cd tatum-crypto-monitor
 
 ### 2) Install dependencies
