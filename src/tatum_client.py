@@ -23,7 +23,9 @@ class TatumClient:
                 "Missing TATUM_API_KEY! Set it in a .env file or environment variables."
             )
         
-        # Creating reusable HTTP session
+        # Reusable HTTP session:
+        # - keeps connections open (faster)
+        # - central place for headers (API key)
         self.session = requests.Session()
         # Setting the API key globally
         self.session.headers.update({"x-api-key": self.api_key})
