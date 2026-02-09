@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from tatum_client import TatumClient
 from analyze import summarize_tatum_transactions, convert_wei_to_eth
 
-
+# Shorten long hashes/addresses for readability
 def shorten_hash(tx_hash: str) -> str:
     if not tx_hash:
         return "n/a"
@@ -44,7 +44,7 @@ def main() -> int:
     try:
         client = TatumClient()
 
-        # 1) Get ETH balance via RPC
+        # 1) Get ETH balance via RPC Gateway
         balance_wei = client.get_eth_balance_wei(args.address)
         balance_eth = convert_wei_to_eth(balance_wei)
 
