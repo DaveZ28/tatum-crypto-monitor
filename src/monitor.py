@@ -68,7 +68,10 @@ def main() -> int:
     print(f"ETH balance (RPC): {balance_eth:.6f} ETH")
     print(f"Items fetched: {summary.total_items}")
     print(f"Incoming: {summary.incoming_count} | Outgoing: {summary.outgoing_count}")
-    print(f"Native ETH in: {summary.native_eth_in} ETH | Native ETH out: {summary.native_eth_out} ETH")
+    print(
+          f"Native ETH in: {summary.native_eth_in:.9f} ETH | "
+          f"Native ETH out: {summary.native_eth_out:.9f} ETH"
+         )
     print(f"Token-related transfers: {summary.token_related_transfers}")
     print(f"Last activity (UTC): {summary.last_activity_iso or 'n/a'}")
 
