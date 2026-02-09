@@ -37,13 +37,15 @@ def _to_decimal(value: Any) -> Decimal:
 
 def _timestamp_ms_to_iso(timestamp_ms: Any) -> Optional[str]:
     """
-    Convert milliseconds timestamp to ISO 8601 UTC string.
+    Convert milliseconds timestamp to string.
     """
     if timestamp_ms is None:
         return None
 
     try:
         timestamp_int = int(timestamp_ms)
+        # Tatum returns timestamp in milliseconds,
+        # so we divide by 1000 before creating datetime.
         dt = datetime.fromtimestamp(timestamp_int / 1000.0, tz=timezone.utc)
         return dt.isoformat()
     except Exception:
@@ -80,7 +82,7 @@ def summarize_tatum_transactions(
                 # Use absolute value in case of negative amounts
                 native_eth_out += abs(amount)
 
-        # Token-related transfer (most reliable: tokenAddress present)
+        # Token-related transfer
         if tx.get("tokenAddress"):
             token_transfers += 1
 
@@ -106,4 +108,3 @@ def summarize_tatum_transactions(
         token_related_transfers=token_transfers,
         last_activity_iso=last_activity_iso,
     )
-
